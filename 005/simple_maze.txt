@@ -1,0 +1,13 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XS   ......................X
+X    XXXXXXX...............X
+X    X     X...............X
+X    X     X...............X
+X    XXXXXXX...............X
+X                          X
+X           XXXXXXXXXXXXX  X
+X           X           X  X
+X           X           X  X
+X           XXXXXXXXXXXXX  X
+X                          T
+XXXXXXXXXXXXXXXXXXXXXXXXXXXX
