@@ -69,7 +69,8 @@ class MazeCoin:
     # sprawdź czy podany stan (x,y, c) jest stanem końcowym
     def is_target_state(self, state):
         x, y, c = state
-        return self.get_tile(state) == Tile.Target and len(c) == 0
+       #return self.get_tile(state) == Tile.Target and len(c) == 0
+        return len(c) == 0
 
     def get_shape(self):
         return self.shape

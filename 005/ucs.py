@@ -2,6 +2,15 @@
 from Queue import PriorityQueue
 from MazeCoin import *
 
+class Node:
+    def __init__(self):
+        self.parent = None
+        self.state = None
+        self.step = None
+        self.cost = 0
+        pass
+
+
 def ucs(instance):
     closed = set()  # zbiór zamknięty
     # inicjujemy zbiór otwarty stanem początkowym. Decyzję ustawiamy na null
@@ -17,7 +26,12 @@ def ucs(instance):
     #jeżeli przez 'node' oznaczyć strukturę wierzchołka używaną poprzednio (w bfs i dfs)
     #to teraz jest to: (priorytet, node)
     #jest to wymagane przez kolejkę.
-    fringe.put((0, [(instance.get_start_state(), None, 0), None]))
+    root_node = Node()
+    root_node.parent = None
+    root_node.cost = 0
+    root_node.step = None
+    root_node.state = instance.get_start_state()
+    fringe.put((0, root_node))
     #znaleziony cel
     target = None
 
@@ -30,41 +44,49 @@ def ucs(instance):
         #rozpakowaliśmy)
         node_cost, node = fringe.get()
 
+        #print node.state
+
         #jeśli jesteśmy w stanie docelowym, ustaw cel i zakończ
-        if instance.is_target_state(node[0][0]):
+        if instance.is_target_state(node.state):
             target = node
             break
 
         #jeśli węzeł nie był rozwijany
-        if node[0][0] not in closed:
+        if node.state not in closed:
             #dodaj go do zbioru zamkniętego (innymi słowy oznacz jako rozwinięty)
-            closed.add(node[0][0])
+            closed.add(node.state)
             #rozwiń go
-            children = instance.get_children(node[0][0])
+            children = instance.get_children(node.state)
+
+            print node.state, children
             #i dla każdego następnika
             for child in children:
-                assert instance.get_tile(child[0]) != Tile.Wall
-
-                #sprawdź koszt następnika
-                child_cost = child[2]
+                child_state, child_step, child_cost = child
+                #assert instance.get_tile(child[0]) != Tile.Wall
+                #print child_state
                 #dodaj informację o poprzedniku (node jest rodzicem child)
                 #jako koszt ustaw sumę następnika i koszt dojścia do rodzica -
                 #został on odczytany przy rozpakowywaniu krotki zwróconej przez
                 #fringe.get()
-                vertex = (node_cost + child_cost, [child, node])
+                vertex = Node()
+                vertex.step = child_step
+                vertex.cost = child_cost + node_cost
+                vertex.parent = node
+                vertex.state = child_state
+                new_node = (vertex.cost, vertex)
                 #i wrzuć do kolejki (zbioru otwartego)
-                fringe.put(vertex)
+                fringe.put(new_node)
 
     #lista decyzji prowadzących do rozwiązania
     solution = []
     #zaczynamy od węzła z wynikiem
     i = target
     #dopóki ma rodzica (nie jesteśmy w korzeniu)
-    while i[1] is not None:
+    while i.parent is not None:
         #dodaj decyzję która nas tutaj doprowadziła
-        solution.append(i[0][1])
+        solution.append(i.step)
         #przejdź do rodzica
-        i = i[1]
+        i = i.parent
     #podążaliśmy od wyjścia do startu przez co trzeba odwrócić kolejność
     solution.reverse()
 

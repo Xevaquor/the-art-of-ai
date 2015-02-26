@@ -1,7 +1,7 @@
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XS       X                  ...........................X
 XXXXX    X                  ...........................X
-X        X                C ...........................X
+X        X                  ...........................X
 X        X                X ...........................X
 X        XC               X ...........................X
 X   C  XXXXXXXXX          X ...........................X
@@ -15,5 +15,5 @@ X                         C                  X         X
 X                         .                  X         X
 X                         .                  X         X
 X              ............                  X         X
-XC             ............        C         X        TX
+X              ............                  X        TX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

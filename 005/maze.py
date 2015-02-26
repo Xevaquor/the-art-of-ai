@@ -5,12 +5,13 @@ Directions = {
     'East': (1, 0),
     'North': (0, -1),
     'South': (0, 1),
-    'West': (-1, 0),
+    'West': (-1, 0)}
+''',
     'NorthEast': (1, -1),
     'NorthWest': (-1, -1),
     'SouthEast': (1, 1),
-    'SouthWest': (-1, 1)
-}
+    'SouthWest': (-1, 1)'''
+#}
 
 
 # Typy pól (kafli). Kolejno: puste, ściana, bagno, pole startowe, wyjście
