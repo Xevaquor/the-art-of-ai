@@ -67,9 +67,9 @@ def draw(h, w):
             #val = maze.get_tile((x, y))
             color = tiles_mapping[val]
             pygame.draw.rect(surf, color, (x_pos, y_pos, tile_size, tile_size))
-            if maze.is_expanded((x, y)):
-                pygame.draw.circle(surf, (255, 0, 0), (x_pos + tile_size / 2, y_pos + tile_size / 2),
-                                   tile_size / 8, 0)
+            # if maze.is_expanded((x, y)):
+            #     pygame.draw.circle(surf, (255, 0, 0), (x_pos + tile_size / 2, y_pos + tile_size / 2),
+            #                        tile_size / 8, 0)
 
 
 

@@ -1,19 +1,19 @@
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XS       X                  ...........................X
-XXXXX    X                  ...........................X
-X        X                  ...........................X
-X        X                X ...........................X
-X        XC               X ...........................X
-X   C  XXXXXXXXX          X ...........................X
-X                         X ...........................X
-X                         X ...........................X
-X                         X ...........................X
-X                         X                  X         X
-X                         X                  X         X
-X                         X                  X         X
-X                         C                  X         X
-X                         .                  X         X
-X                         .                  X         X
-X              ............                  X         X
-X              ............                  X        TX
+XS                      CX          X      X           X
+X                        X    X     X   X  X           X
+X                        X  C X         X              X
+X                        XXXXXXXXXXXXXXXXXXX           X
+X                        X                             X
+X                        X                             X
+X                        X C                           X
+X                        X XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X                                                     CX
+X                                                      X
+X                                                      X
+X                                                      X
+X                                                      X
+X                                                      X
+X                                                      X
+X                                                      X
+XC                                                    TX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

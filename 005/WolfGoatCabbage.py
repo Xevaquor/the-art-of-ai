@@ -66,17 +66,19 @@ class WolfGoatCabbage:
     def get_after_decision(self, state, d):
         assert False
 
+    def is_lose_state(self, s):
+        return s.wolf == s.goat and s.wolf != s.human or s.goat == s.cabbage and s.goat != s.human
+
     # rozwiń wierzchołek
     def get_children(self, state):
         s = State()
         s.from_tuple(state)
         children = []
 
-        if s.wolf == s.goat and s.wolf != s.human:
-            return []
-        elif s.goat == s.cabbage and s.goat != s.human:
+        if self.is_lose_state(s):
             return []
 
+        #zawsze można przepłynąć pustą łódką
         no_transport = State()
         no_transport.human = not s.human
         no_transport.wolf = s.wolf
