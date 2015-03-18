@@ -26,6 +26,12 @@ class MazeCoin:
         self.shape = (0, 0)
         # miejsce startowe
         self.startState = None
+        self.targetState = None
+        self.expanded_count = 0
+
+    def get_target_state(self):
+        return self.targetState
+
 
     def load_from_file(self, filename):
         rows = 0
@@ -48,6 +54,7 @@ class MazeCoin:
                         self.startState = (cols, rows - 1, [])
                     elif char == 'T':
                         tile = Tile.Target
+                        self.targetState = (cols, rows - 1, [])
                     elif char == 'C':
                         tile = Tile.Blank
                         self.coins.append((cols, rows - 1))
@@ -89,6 +96,7 @@ class MazeCoin:
 
     # rozwiń wierzchołek
     def get_children(self, state):
+        self.expanded_count += 1
         x, y, c = state
         children = []
         # dla wszystkich potencjalnie możliwych ruchów

@@ -5,13 +5,12 @@ Directions = {
     'East': (1, 0),
     'North': (0, -1),
     'South': (0, 1),
-    'West': (-1, 0)}
-''',
+    'West': (-1, 0),
     'NorthEast': (1, -1),
     'NorthWest': (-1, -1),
     'SouthEast': (1, 1),
-    'SouthWest': (-1, 1)'''
-#}
+    'SouthWest': (-1, 1)
+}
 
 
 # Typy pól (kafli). Kolejno: puste, ściana, bagno, pole startowe, wyjście
@@ -31,6 +30,10 @@ class Maze:
         self.shape = (0, 0)
         # miejsce startowe
         self.startState = None
+        self.targetState = None
+        self.expanded_count = 0
+    def get_target_state(self):
+        return self.targetState
 
     def load_from_file(self, filename):
         rows = 0
@@ -53,6 +56,7 @@ class Maze:
                         self.startState = (cols, rows - 1)
                     elif char == 'T':
                         tile = Tile.Target
+                        self.targetState = (cols, rows - 1)
                     elif char == '\r' or char == '\n':
                         break
                     else:
@@ -106,6 +110,7 @@ class Maze:
 
     def is_expanded(self, state):
         x, y = state
+        self.expanded_count += 1
         return self.expanded[y][x]
 
 

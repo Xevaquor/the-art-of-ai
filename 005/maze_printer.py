@@ -6,7 +6,10 @@ from MazeCoin import MazeCoin, Tile
 from bfs import *
 from dfs import *
 from ucs import *
+from astar import astar
 from maze import Maze
+
+show_expanded = True
 
 screen_x = 1024
 screen_y = 768
@@ -30,7 +33,7 @@ pygame.time.set_timer(USEREVENT + 1, 200)
 
 path = ucs(maze)
 path.reverse()
-print path
+print maze.expanded_count
 
 wnd = pygame.display.set_mode((screen_x, screen_y), RESIZABLE)
 caption = "Maze"
@@ -67,9 +70,9 @@ def draw(h, w):
             #val = maze.get_tile((x, y))
             color = tiles_mapping[val]
             pygame.draw.rect(surf, color, (x_pos, y_pos, tile_size, tile_size))
-            # if maze.is_expanded((x, y)):
-            #     pygame.draw.circle(surf, (255, 0, 0), (x_pos + tile_size / 2, y_pos + tile_size / 2),
-            #                        tile_size / 8, 0)
+            if show_expanded and maze.is_expanded((x, y)):
+                pygame.draw.circle(surf, (255, 0, 0), (x_pos + tile_size / 2, y_pos + tile_size / 2),
+                                 tile_size / 8, 0)
 
 
 

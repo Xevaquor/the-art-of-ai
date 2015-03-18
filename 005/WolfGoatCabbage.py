@@ -2,6 +2,7 @@
 __author__ = 'Xev'
 
 from ucs import ucs
+from astar import astar
 
 Directions = {
     'East': (1, 0),
@@ -46,6 +47,7 @@ class WolfGoatCabbage:
         # miejsce startowe
         # human, wolf, goat, cabbage
         self.startState = State()
+        self.expanded_nodes = 0
 
         #self.startState.wolf = True
         #self.startState.human = False
@@ -71,6 +73,7 @@ class WolfGoatCabbage:
 
     # rozwiń wierzchołek
     def get_children(self, state):
+        self.expanded_nodes += 1
         s = State()
         s.from_tuple(state)
         children = []
@@ -122,7 +125,16 @@ q = (False, False, True, False)
 print wgc.get_children(q)
 '''
 
-sol = ucs(wgc)
-print sol
+def h(state, instance):
+    s=0
+    for x in state:
+        if x:
+            s+=1
+    print s
+    return s
+
+#sol = astar(wgc, lambda s, x: len(filter(lambda i: i, s)))
+sol = astar(wgc, h)
+print wgc.expanded_nodes, sol
 
 
