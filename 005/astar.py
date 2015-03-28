@@ -30,7 +30,7 @@ def taxi(p1, p2):
 
 
 def astar(instance, h=heuristics):
-    closed = set()  # zbiór zamknięty
+    closed = []  # zbiór zamknięty
     # inicjujemy zbiór otwarty stanem początkowym. Decyzję ustawiamy na null
     # koszt na 0 - nie ma to znaczenia. Rodzicem jest również null (jest to
     # korzeń drzewa
@@ -68,7 +68,7 @@ def astar(instance, h=heuristics):
         #jeśli węzeł nie był rozwijany
         if node.state not in closed:
             #dodaj go do zbioru zamkniętego (innymi słowy oznacz jako rozwinięty)
-            closed.add(node.state)
+            closed.append(node.state)
             #rozwiń go
             children = instance.get_children(node.state)
 

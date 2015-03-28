@@ -12,7 +12,7 @@ class Node:
 
 
 def ucs(instance):
-    closed = set()  # zbiór zamknięty
+    closed = []  # zbiór zamknięty
     # inicjujemy zbiór otwarty stanem początkowym. Decyzję ustawiamy na null
     #koszt na 0 - nie ma to znaczenia. Rodzicem jest również null (jest to
     #korzeń drzewa
@@ -54,7 +54,7 @@ def ucs(instance):
         #jeśli węzeł nie był rozwijany
         if node.state not in closed:
             #dodaj go do zbioru zamkniętego (innymi słowy oznacz jako rozwinięty)
-            closed.add(node.state)
+            closed.append(node.state)
             #rozwiń go
             children = instance.get_children(node.state)
 
